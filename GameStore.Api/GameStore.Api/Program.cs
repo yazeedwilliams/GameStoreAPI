@@ -16,7 +16,13 @@ List<GameDTO> games = [
 app.MapGet("games", () => games);
 
 // Get /games/1
-app.MapGet("games/{ID}", (int id) => games.Find(game => game.ID == id)).WithName(GetGameEndpointName);
+app.MapGet("games/{ID}", (int id) => 
+{
+    GameDTO? game = games.Find(game => game.ID == id);
+
+    return game is null ? Results.NotFound() : Results.Ok(game);
+
+}).WithName(GetGameEndpointName);
 
 // Post /games
 app.MapPost("games", (CreateGameDTO newGame) =>
@@ -37,6 +43,11 @@ app.MapPost("games", (CreateGameDTO newGame) =>
 app.MapPut("games/{ID}", (int id, UpdateGameDTO updatedGame) =>
 {
     var index = games.FindIndex(game => game.ID == id);
+
+    if (index == -1)
+    {
+        return Results.NotFound();
+    }
 
     games[index] = new GameDTO(
         id,
