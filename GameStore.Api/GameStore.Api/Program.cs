@@ -11,12 +11,12 @@ builder.Services.AddSqlite<GameStoreContext>(connString);
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
-    db.Database.Migrate(); // 👈 this applies migrations and creates the schema
-    Console.WriteLine("Database migrated successfully!");
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var db = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
+//     db.Database.Migrate(); // 👈 this applies migrations and creates the schema
+//     Console.WriteLine("Database migrated successfully!");
+// }
 
 app.MapGamesEndpoints();
 
