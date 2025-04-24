@@ -1,0 +1,42 @@
+# Build results
+bin/
+obj/
+out/
+artifacts/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# ASP.NET secrets (used with Secret Manager)
+secrets.json
+appsettings.Development.json
+
+# Logs
+*.log
+
+# DotCover
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Rider project files
+.idea/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Others
+*.db
+*.pdb
+*.cache
