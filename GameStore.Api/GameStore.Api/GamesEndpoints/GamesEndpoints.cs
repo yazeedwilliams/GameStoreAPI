@@ -27,7 +27,7 @@ public static class GamesEndpoints
         {
             Game? game = dbContext.Games.Find(id);
 
-            return game is null ? Results.NotFound() : Results.Ok(game.ToGameDetailsDTO);
+            return game is null ? Results.NotFound() : Results.Ok(game.ToGameDetailsDTO());
 
         }).WithName(GetGameEndpointName);
 
